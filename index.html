@@ -10,7 +10,7 @@
   <!--
     - favicon
   -->
-  <link rel="shortcut icon" href="987.jpg" type="image/x-icon">
+  <link rel="shortcut icon" href="987.png" type="image/x-icon">
 
   <!--
     - custom css link
@@ -42,7 +42,7 @@
       <div class="sidebar-info">
 
         <figure class="avatar-box">
-          <img src="987.jpg" alt="Aayush Shrivastava" width="80">
+          <img src="987.png" alt="Aayush Shrivastava" width="80">
         </figure>
 
         <div class="info-content">
@@ -140,7 +140,7 @@
           </li>
 
           <li class="social-item">
-            <a href="https://www.instagram.com/_arysh.024/" class="social-link">
+            <a href="https://www.instagram.com/_lifeline024/" class="social-link">
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
           </li>
@@ -278,7 +278,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="https://img.icons8.com/?size=100&id=79062&format=png&color=000000" alt="Language" width="40">
+                <img src="https://img.icons8.com/?size=100&id=12486&format=png&color=000000" alt="Language" width="40">
               </div>
 
               <div class="service-content-box">
@@ -482,32 +482,6 @@
             <li class="skills-item">
 
               <div class="title-wrapper">
-                <h5 class="h5">IOT and Embedded System</h5>
-                <data value="75">75%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 75%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Data Analysis (Excel,CSV)</h5>
-                <data value="65">65%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 65%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
                 <h5 class="h5">Microsoft Office</h5>
                 <data value="95">95%</data>
               </div>
@@ -521,23 +495,49 @@
             <li class="skills-item">
 
               <div class="title-wrapper">
-                <h5 class="h5">Programming (C,C++,PYTHON,JAVA,HTML)</h5>
-                <data value="60">60%</data>
+                <h5 class="h5">Data Visualization (Power BI,Excel)</h5>
+                <data value="70">70%</data>
               </div>
 
               <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 60%;"></div>
+                <div class="skill-progress-fill" style="width: 70%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Programming (Python, HTML)</h5>
+                <data value="75">75%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 75%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">IOT</h5>
+                <data value="65">65%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 65%;"></div>
               </div>
 
               <li class="skills-item">
 
                 <div class="title-wrapper">
-                  <h5 class="h5">Adobe Photoshop & Video Editing </h5>
-                  <data value="70">70%</data>
+                  <h5 class="h5">Android Development </h5>
+                  <data value="60">60%</data>
                 </div>
   
                 <div class="skill-progress-bg">
-                  <div class="skill-progress-fill" style="width: 70%;"></div>
+                  <div class="skill-progress-fill" style="width: 60%;"></div>
                 </div>
 
             </li>
@@ -732,7 +732,57 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
+<script>
+  // Initialize EmailJS
+  (function(){
+      emailjs.init("life0509line@gmail.com");  // Replace with your EmailJS user ID
+  })();
+
+  // Wait for the DOM to load before attaching event listeners
+  document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("contactForm");
+      const submitButton = form.querySelector("[type='submit']");
+      const inputs = form.querySelectorAll("[data-form-input]");
+
+      // Enable/Disable submit button based on form validation
+      form.addEventListener("input", function() {
+          let isValid = true;
+          inputs.forEach(input => {
+              if (!input.value.trim()) {
+                  isValid = false;
+              }
+          });
+          submitButton.disabled = !isValid;
+      });
+
+      // Handle form submission
+      form.addEventListener("submit", function(event) {
+          event.preventDefault(); // Prevent default form submission behavior
+
+          // Collect form data
+          const formData = new FormData(form);
+          const data = {};
+          formData.forEach((value, key) => {
+              data[key] = value;
+          });
+
+          // Send form data via EmailJS
+          emailjs.send("service_z1y99vn", "template_d86o2hc", data)
+              .then(function(response) {
+                  // Success message
+                  alert("Message sent successfully!");
+                  form.reset(); // Reset form fields
+                  submitButton.disabled = true; // Disable button after submission
+              }, function(error) {
+                  // Error message
+                  alert("Error sending message. Please try again.");
+              });
+      });
+  });
+
+</script>
 </body>
 
 </html>
